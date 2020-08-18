@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "918004857926",
+    "firebase_url": "https://paleorecipeapp-ed57a.firebaseio.com",
+    "project_id": "paleorecipeapp-ed57a",
+    "storage_bucket": "paleorecipeapp-ed57a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918004857926:android:583b5c41556f51e4681e47",
+        "android_client_info": {
+          "package_name": "com.moringaschool.paleorecipeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918004857926-kbf7s1giss5e02f3r8qcev412eu9ehu2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.paleorecipeapp",
+            "certificate_hash": "76b759a96c14aab6c5e3da91bf1374d0ecddc28f"
+          }
+        },
+        {
+          "client_id": "918004857926-446otbesguel5cgpq30tc8thvvtl20hu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxuBL5tFSA7yiBuD3JNp-LJLF4fDLzh5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918004857926-446otbesguel5cgpq30tc8thvvtl20hu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
