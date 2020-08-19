@@ -29,8 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RecipeListActivity extends AppCompatActivity {
-    //    private SharedPreferences mSharedPreferences;
-//    private String mRecentAddress;
+    private SharedPreferences mSharedPreferences;
     private String mRecentAddress;
     private static final String TAG = RecipeListActivity.class.getSimpleName();
 
@@ -84,8 +83,8 @@ public class RecipeListActivity extends AppCompatActivity {
             }
 
         });
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+            mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+         mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
 //
 //        if (mRecentAddress != null) {
 //            getRestaurants(mRecentAddress);

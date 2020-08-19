@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Parcel
-public class Restaurant {
+public class Recipe {
     String name;
     String phone;
     String website;
@@ -17,9 +17,9 @@ public class Restaurant {
     double longitude;
     List<String> categories = new ArrayList<>();
 
-    public Restaurant() {}
+    public Recipe() {}
 
-    public Restaurant(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
+    public Recipe(String name, String phone, String website, double rating, String imageUrl, ArrayList<String> address, double latitude, double longitude, ArrayList<String> categories) {
         this.name = name;
         this.phone = phone;
         this.website = website;
