@@ -14,17 +14,18 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/background" />
+        android:src="@drawable/yoghurt" />
 
     <TextView
         android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_alignParentEnd="true"
 
-        android:text="PaleoRecipes"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="9dp"
+        android:text="Paleo"
         android:textColor="@color/colorTextIcons"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -38,7 +39,7 @@
         android:layout_marginBottom="10dp"
         android:background="@color/colorTextIcons"
         android:fontFamily="@font/open_sans_condensed_bold"
-        android:hint="Enter Zip Code"
+        android:hint="Enter American City"
         android:padding="5dp" />
 
     <Button
