@@ -80,3 +80,16 @@ public class SavedRecipeListActivity extends AppCompatActivity {
     }
 }
 
+//initialize our DatabaseReference, FirebaseRecyclerAdapter, and RecyclerView member variables.
+//
+//We then pass in the activity_restaurants layout into the setContentView() method to display the correct layout.
+//
+//Next, we set the mRestaurantReference using the "restaurants" child node key from our Constants class.
+//
+//We then create a method to set up the FirebaseAdapter by first creating a FirebaseRecyclerOptions object which is cast into the model class, we build the object by setting the query (or database reference) (by) passing in the database-reference and the Model class the objects will be parsed into
+//
+//Inside of the onBindViewHolder() method, we call the bindRestaurant() method on our viewHolder to set the appropriate text and image with the given restaurant.
+//
+//We then set the adapter on our RecyclerView.
+//
+//Finally, we need to clean up the FirebaseAdapter. When the activity is stops, we need to call onStop() on the adapter so that it can stop listening for changes in the Firebase database.
