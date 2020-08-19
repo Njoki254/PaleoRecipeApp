@@ -48,6 +48,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mSearchedLocationReference = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_SEARCHED_MEAL);
+
+        mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() { //attach listener
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
+                    String location = locationSnapshot.getValue().toString();
+
+                    Log.d("Locations updated", "location: " + location); //log
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
+
+            }
+        });
+        //define a Firebase DatabaseReference object called mSearchedLocationReference and pass it the child key of the searchedLocations node (as covered in Data Persistence: Writing to Firebase lesson). Then, we call addValueEventListener()on our mSearchedLocationReference object to attach a new ValueEventListener (which we provide as a parameter).
+        //
+        //As mentioned above, ValueEventListeners have two methods that must be overridden; onDataChange() and onCancelled():
+        //
+        //To recap:
+        //
+        //onDataChange() is called whenever data at the specified node changes. Such as adding a new zip code. It will return a dataSnapshot object, which is essentially a read-only copy of the Firebase state.
+        //
+        //onCancelled() is called if the listener is unsuccessful for any reason. We won't add any code here right now, but could in the future.
+        //
+        //In our onDataChange method we'll snag the values returned in the dataSnapshot, loop through each of the children with the getChildren() method, and print their values to the logcat. Other methods we can call on a dataSnapshot include .child() and .getKey().
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -67,24 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         };
 
-        mSearchedLocationReference = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_CHILD_SEARCHED_MEAL);
 
-        mSearchedLocationReferenceListener = mSearchedLocationReference.addValueEventListener(new ValueEventListener() { //attach listener
-
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
-                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
-                    String location = locationSnapshot.getValue().toString();
-
-                    Log.d("Locations updated", "location: " + location); //log
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
-
-            }
-        });
 
 
 //        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
