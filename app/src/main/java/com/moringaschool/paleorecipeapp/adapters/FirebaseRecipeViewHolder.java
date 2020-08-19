@@ -75,3 +75,12 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         });
     }
 }
+//we add static variables to hold the width and height of our images for Picasso.
+//
+//We then add member variables to hold the view and context which we set in our constructor.
+//
+//We also implement the View.OnClickListener interface and set the click listener on our itemView.
+//
+//In our bindRestaurant() method, we first bind the views and then set the image and text views.
+//
+//Finally, in the onClick() method, we create a singleValueEventListener to grab out the current list of restaurants from Firebase which we pass along to the RestaurantDetailActivity in the form of an intent extra. We will need this ArrayList when constructing an instance of the RestaurantDetailFragment.
