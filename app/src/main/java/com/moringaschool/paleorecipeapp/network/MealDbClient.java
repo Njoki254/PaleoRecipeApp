@@ -23,7 +23,7 @@ public class MealDbClient {
                         @Override
                         public Response intercept(Chain chain) throws IOException {
                             Request newRequest  = chain.request().newBuilder()
-                                    .addHeader("Authorization", Constants.YELP_API_KEY)
+                                    .addHeader("Authorization", Constants.MEALDB_API_KEY)
                                     .build();
                             return chain.proceed(newRequest);
                         }
@@ -31,7 +31,7 @@ public class MealDbClient {
                     .build();
 
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.YELP_BASE_URL)
+                    .baseUrl(Constants.MEALDB_BASE_URL)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
