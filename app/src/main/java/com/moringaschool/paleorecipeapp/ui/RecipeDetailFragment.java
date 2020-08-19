@@ -115,3 +115,12 @@ public class RecipeDetailFragment extends Fragment implements View.OnClickListen
     }
 }
 
+//Set a click listener for mSaveRestaurantButton in the fragment's existing onCreateView()method.
+//
+//Add another conditional statement to the View.OnClickListener interface's onClick()override (we should already have several conditionals that create implicit intents if the user clicks on an address, phone number, or website, as covered in this lesson).
+//
+//In the conditional, we create a new DatabaseReference object called restaurantRef using the getInstance() and getReference() methods, passing in the key for our restaurants node.
+//
+//Then, we call push() and setValue() , passing in our restaurant object as an argument, to create a node for the selected restaurant with a unique push id.
+//
+//Finally, we display a brief toast to confirm the restaurant has been saved.
