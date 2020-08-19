@@ -170,9 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
-//    private void addToSharedPreferences(String location) {
-//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
-//    }
+
 //call the push() method before setting the value. This will ensure each new entry is added to the node under a unique, randomly generated id called a push id:
     public void saveLocationToFirebase(String location) {
         mSearchedLocationReference.push().setValue(location);
@@ -183,4 +181,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onDestroy();
         mSearchedLocationReference.removeEventListener(mSearchedLocationReferenceListener);
     }
+    //    private void addToSharedPreferences(String location) {
+//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
+//    }
 }
+//we declare the member variable mSearchedLocationReferenceListenerand assign it to the event listener. Then, we override the activity's onDestroy() method that automatically runs when the activity is halted. We explicitly instruct our app to remove the listener from our Firebase node when the activity is destroyed.
+//
+//Note that the onDestroy() method is an override for the activity, not the listener. It is defined in the top level of the class, not nested within the addValueEventListener() block.
