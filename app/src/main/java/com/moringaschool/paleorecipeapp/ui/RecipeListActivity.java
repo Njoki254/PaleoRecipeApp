@@ -1,7 +1,9 @@
 package com.moringaschool.paleorecipeapp.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringaschool.paleorecipeapp.R;
 import com.moringaschool.paleorecipeapp.adapters.RecipeListAdapter;
 import com.moringaschool.paleorecipeapp.models.Business;
+import com.moringaschool.paleorecipeapp.models.Constants;
 import com.moringaschool.paleorecipeapp.models.YelpBusinessesSearchResponse;
 import com.moringaschool.paleorecipeapp.network.MealDbApi;
 import com.moringaschool.paleorecipeapp.network.MealDbClient;
@@ -26,6 +29,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RecipeListActivity extends AppCompatActivity {
+    //    private SharedPreferences mSharedPreferences;
+//    private String mRecentAddress;
+    private String mRecentAddress;
     private static final String TAG = RecipeListActivity.class.getSimpleName();
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -78,6 +84,13 @@ public class RecipeListActivity extends AppCompatActivity {
             }
 
         });
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//
+//        if (mRecentAddress != null) {
+//            getRestaurants(mRecentAddress);
+//        }
+
     }
 
     private void showFailureMessage() {
