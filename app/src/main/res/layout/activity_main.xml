@@ -25,8 +25,9 @@
 
         android:layout_marginTop="28dp"
         android:layout_marginEnd="9dp"
+        android:fontFamily="casual"
         android:text="Paleo"
-        android:textColor="@color/colorTextIcons"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="50sp"
         android:textStyle="bold" />
 
@@ -66,6 +67,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp" />
+
 
 
 </RelativeLayout>
