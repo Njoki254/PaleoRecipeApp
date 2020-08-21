@@ -26,7 +26,8 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="9dp"
         android:fontFamily="casual"
-        android:text="Paleo"
+        android:text="What is a Paleo Diet?"
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="50sp"
         android:textStyle="bold" />
@@ -73,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="334dp"
+        android:layout_marginTop="261dp"
         android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/open_sans_condensed_bold"
         android:text="A paleo diet typically includes lean meats, fish, fruits, vegetables, nuts and seeds,foods that in the past could be obtained by hunting and gathering."
