@@ -40,7 +40,7 @@
         android:layout_marginBottom="10dp"
         android:background="@color/colorTextIcons"
         android:fontFamily="@font/open_sans_condensed_bold"
-        android:hint="Enter American City"
+        android:hint="Enter USA City"
         android:padding="5dp" />
 
     <Button
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="My Saved Recipes"
         android:id="@+id/savedRecipesButton"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
         android:layout_alignParentBottom="true"
@@ -60,38 +60,28 @@
         android:layout_height="wrap_content"
         android:text="Find Recipes"
         android:id="@+id/findRecipesButton"
-        android:background="@color/colorAccent"
+        android:background="@color/colorPrimary"
         android:textColor="@color/colorTextIcons"
         android:visibility="visible"
         android:layout_above="@+id/savedRecipesButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp" />
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="336dp"
-        android:backgroundTintMode="@color/colorPrimary"
-        android:fontFamily="@font/combo"
-        android:text="Specially for Paleo Diet Lovers"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="495dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTintMode="@color/colorPrimary"
+        android:layout_marginTop="295dp"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/combo"
-        android:text="You can add or review recipes"
+        android:text="A paleo diet typically includes lean meats, fish, fruits, vegetables, nuts and seeds,foods that in the past could be obtained by hunting and gathering."
+        android:textAlignment="center"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp" />
+        android:textFontWeight="4"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
