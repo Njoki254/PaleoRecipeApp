@@ -5,9 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
+    tools:context=".ui.GetStartedActivity"
     android:background="#000000">
-
+    <!--Set id in each textview so you can test views-->
 
     <ImageView
         android:id="@+id/imageView"
@@ -22,51 +22,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="9dp"
-        android:fontFamily="casual"
-        android:text="Paleo"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/locationEditText"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="17dp"
+        android:backgroundTintMode="@color/colorPrimary"
+        android:fontFamily="@font/combo"
+        android:text="Paleo "
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryText"
+        android:textFontWeight="10"
+        android:textStyle="bold"
+        android:textSize="50sp" /><![CDATA[
+    />
+    ]]><!-- <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/findRecipesButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/nameEditText"
         android:background="@color/colorTextIcons"
-        android:fontFamily="@font/open_sans_condensed_bold"
-        android:hint="Enter American City"
-        android:padding="5dp" />
+        android:layout_above="@+id/findRecipeButton"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:hint="Enter Recipe Name"
+        android:layout_centerHorizontal="true"/>-->
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My Saved Recipes"
-        android:id="@+id/savedRecipesButton"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Find Recipes"
-        android:id="@+id/findRecipesButton"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_above="@+id/savedRecipesButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp" />
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -85,13 +63,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="495dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="533dp"
+        android:layout_marginEnd="28dp"
         android:backgroundTintMode="@color/colorPrimary"
         android:fontFamily="@font/combo"
         android:text="You can add or review recipes"
         android:textColor="@color/colorPrimaryText"
         android:textSize="25sp" />
+
+    <Button
+
+        android:id="@+id/getStartedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:background="@color/colorPrimaryText"
+        android:text="Get Started"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textColor="@color/colorPrimary"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
 
 
 </RelativeLayout>
