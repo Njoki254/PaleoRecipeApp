@@ -13,14 +13,23 @@ This is an android studio project that meets the following requirements:
 - Uses a toast
 - And is able to gather user input concerning recipes
 
+## Must Haves
+
+- Latest Android Studio downloaded
+- Java
+- Firebase Account Set-up
+- Fair understanding of both android and java
 
  ## Project Set Up
 
  - Make sure all requirements for running java applications are installed;JUnit, Intellij,SDK,JDK.
  - Clone the project to your local machine from https://github.com/Njoki254/Paleo-Recipes.git.
  - To view the site visit
- - Run gradle run to compile and java PaleoRecipes to run the program.
+ - Run gradle run to compile and java PaleoRecipesApp to run the program.
  - Ensure you have a device created or physical one to use as your emulator to test the app
+
+ ## API
+ MealDb
 
  ## Technologies Used
 
@@ -28,6 +37,7 @@ This is an android studio project that meets the following requirements:
  - Junit
  - Android Studio
  - Intellij
+ - Firebase Authentication
  - Xml
  - Views
 - Markdown
