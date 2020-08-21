@@ -24,15 +24,17 @@
         <activity android:name=".ui.SavedRecipeListActivity" />
         <activity android:name=".ui.RecipeDetailActivity" />
         <activity android:name=".ui.RecipeListActivity"/>
-            <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.paleorecipeapp.ui.GetStartedActivity" />
+                android:value="com.moringaschool.paleorecipeapp.ui.GetStartedActivity" >
+            </meta-data>
+
         </activity>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-    </application>
+     </application>
 
 </manifest>
