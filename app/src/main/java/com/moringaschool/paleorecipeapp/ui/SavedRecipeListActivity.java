@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.paleorecipeapp.R;
+import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeListAdapter;
 import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeViewHolder;
 import com.moringaschool.paleorecipeapp.models.Recipe;
 import com.moringaschool.paleorecipeapp.models.Constants;
@@ -19,13 +21,15 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.moringaschool.paleorecipeapp.models.Recipe;
+import com.moringaschool.paleorecipeapp.util.OnStartDragListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SavedRecipeListActivity extends AppCompatActivity {
+public class SavedRecipeListActivity extends AppCompatActivity  implements OnStartDragListener {
     private DatabaseReference mRecipeReference;
-    private FirebaseRecyclerAdapter<Recipe, FirebaseRecipeViewHolder> mFirebaseAdapter;
+    private FirebaseRecipeListAdapter mFirebaseAdapter;
+    private ItemTouchHelper mItemTouchHelper;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;

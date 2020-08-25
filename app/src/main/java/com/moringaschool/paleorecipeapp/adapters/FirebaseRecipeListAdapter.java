@@ -53,3 +53,6 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     }
 
 }
+//onItemMove() and onItemDismiss() override methods from the ItemTouchHelperAdapter interface.
+//
+//onBindViewHolder() comes from an interface included as part of the FirebaseRecyclerAdapter class.
