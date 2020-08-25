@@ -2,6 +2,7 @@ package com.moringaschool.paleorecipeapp.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -21,6 +22,8 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     private OnStartDragListener mOnStartDragListener;
     private Context mContext;
 
+
+
     public FirebaseRecipeListAdapter(FirebaseRecyclerOptions<Recipe> options,
                                      DatabaseReference ref,
                                      OnStartDragListener onStartDragListener,
@@ -30,6 +33,7 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
         mOnStartDragListener = onStartDragListener;
         mContext = context;
     }
+
     @Override
     protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int position, @NonNull Recipe recipe) {
         firebaseRecipeViewHolder.bindRecipe(recipe);
@@ -51,6 +55,7 @@ public class FirebaseRecipeListAdapter extends FirebaseRecyclerAdapter<Recipe, F
     public void onItemDismiss(int position){
 
     }
+
 
 }
 //onItemMove() and onItemDismiss() override methods from the ItemTouchHelperAdapter interface.
