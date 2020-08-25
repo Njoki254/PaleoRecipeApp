@@ -1,32 +1,28 @@
 package com.moringaschool.paleorecipeapp.ui;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.moringaschool.paleorecipeapp.R;
-import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeListAdapter;
-import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeViewHolder;
-import com.moringaschool.paleorecipeapp.models.Recipe;
-import com.moringaschool.paleorecipeapp.models.Constants;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.paleorecipeapp.R;
+import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeListAdapter;
+import com.moringaschool.paleorecipeapp.models.Constants;
 import com.moringaschool.paleorecipeapp.models.Recipe;
 import com.moringaschool.paleorecipeapp.util.OnStartDragListener;
+import com.moringaschool.paleorecipeapp.util.SimpleItemTouchHelperCallback;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SavedRecipeListActivity extends AppCompatActivity  implements OnStartDragListener {
+public class SavedRecipeListActivity extends AppCompatActivity implements OnStartDragListener {
     private DatabaseReference mRecipeReference;
     private FirebaseRecipeListAdapter mFirebaseAdapter;
     private ItemTouchHelper mItemTouchHelper;
@@ -42,32 +38,26 @@ public class SavedRecipeListActivity extends AppCompatActivity  implements OnSta
         ButterKnife.bind(this);
 
 
-        mRecipeReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
         setUpFirebaseAdapter();
     }
 
     private void setUpFirebaseAdapter(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        mRecipeReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES).child(uid);
         FirebaseRecyclerOptions<Recipe> options =
                 new FirebaseRecyclerOptions.Builder<Recipe>()
                         .setQuery(mRecipeReference, Recipe.class)
                         .build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Recipe, FirebaseRecipeViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int position, @NonNull Recipe recipe) {
-                firebaseRecipeViewHolder.bindRecipe(recipe);
-            }
-
-            @NonNull
-            @Override
-            public FirebaseRecipeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_list_item_drag, parent, false);
-                return new FirebaseRecipeViewHolder(view);
-            }
-        };
+        mFirebaseAdapter = new FirebaseRecipeListAdapter(options, mRecipeReference, this, this);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(mFirebaseAdapter);
+        mRecyclerView.setHasFixedSize(true);
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(mFirebaseAdapter);
+        mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     @Override
@@ -83,18 +73,18 @@ public class SavedRecipeListActivity extends AppCompatActivity  implements OnSta
             mFirebaseAdapter.stopListening();
         }
     }
+    public void onStartDrag(RecyclerView.ViewHolder viewHolder){
+        mItemTouchHelper.startDrag(viewHolder);
+    }
 }
-
-//initialize our DatabaseReference, FirebaseRecyclerAdapter, and RecyclerView member variables.
+//We add the ItemTouchHelper as a member variable so that we can use it in the OnStartDragListener's onStartDrag() method.
 //
-//We then pass in the activity_restaurants layout into the setContentView() method to display the correct layout.
+//In the FirebaseRestaurantListAdapter constructor, this refers to the OnStartDragListener and the Context. Both are necessary to construct an instance of a FirebaseRestaurantListAdapter.
 //
-//Next, we set the mRestaurantReference using the "restaurants" child node key from our Constants class.
+//The SimpleItemTouchHelperCallback takes an adapter as a parameter so we pass it the instance of the FirebaseRestaurantListAdapter we just created.
 //
-//We then create a method to set up the FirebaseAdapter by first creating a FirebaseRecyclerOptions object which is cast into the model class, we build the object by setting the query (or database reference) (by) passing in the database-reference and the Model class the objects will be parsed into
+//The ItemTouchHelper takes a ItemTouchHelper.Callback as an argument so we can pass it the instance of the SimpleItemTouchHelperCallback that we just created using our adapter.
 //
-//Inside of the onBindViewHolder() method, we call the bindRestaurant() method on our viewHolder to set the appropriate text and image with the given restaurant.
+//To enable the interfaces to communicate with the necessary callbacks, we must attach the ItemTouchHelper to our RecyclerView using the attachToRecyclerView() method.
 //
-//We then set the adapter on our RecyclerView.
-//
-//Finally, we need to clean up the FirebaseAdapter. When the activity is stops, we need to call onStop() on the adapter so that it can stop listening for changes in the Firebase database.
+//Finally, we call the startDrag() method on the instance of our ItemTouchHelper inside of the onStartDrag() override which will eventually send our touch events back to our SimpleItemTouchHelperCallback.
