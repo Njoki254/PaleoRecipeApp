@@ -2,6 +2,7 @@ package com.moringaschool.paleorecipeapp.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.moringaschool.paleorecipeapp.util.OnStartDragListener;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -28,6 +30,8 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
 
     View mView;
     Context mContext;
+    public ImageView mRecipeImageView;
+
 
     public FirebaseRecipeViewHolder(View itemView) {
         super(itemView);
@@ -48,6 +52,8 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         categoryTextView.setText(recipe.getCategories().get(0));
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
     }
+
+
 
     @Override
     public void onClick(View view) {
@@ -75,6 +81,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
             }
         });
     }
+
 }
 //we add static variables to hold the width and height of our images for Picasso.
 //
