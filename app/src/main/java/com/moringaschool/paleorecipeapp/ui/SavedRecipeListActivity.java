@@ -12,19 +12,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.paleorecipeapp.R;
 import com.moringaschool.paleorecipeapp.adapters.FirebaseRecipeViewHolder;
-import com.moringaschool.paleorecipeapp.models.Business;
+import com.moringaschool.paleorecipeapp.models.Recipe;
 import com.moringaschool.paleorecipeapp.models.Constants;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.paleorecipeapp.models.Recipe;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SavedRecipeListActivity extends AppCompatActivity {
     private DatabaseReference mRecipeReference;
-    private FirebaseRecyclerAdapter<Business, FirebaseRecipeViewHolder> mFirebaseAdapter;
+    private FirebaseRecyclerAdapter<Recipe, FirebaseRecipeViewHolder> mFirebaseAdapter;
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
@@ -42,14 +43,14 @@ public class SavedRecipeListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseAdapter(){
-        FirebaseRecyclerOptions<Business> options =
-                new FirebaseRecyclerOptions.Builder<Business>()
-                        .setQuery(mRecipeReference, Business.class)
+        FirebaseRecyclerOptions<Recipe> options =
+                new FirebaseRecyclerOptions.Builder<Recipe>()
+                        .setQuery(mRecipeReference, Recipe.class)
                         .build();
 
-        mFirebaseAdapter = new FirebaseRecyclerAdapter<Business, FirebaseRecipeViewHolder>(options) {
+        mFirebaseAdapter = new FirebaseRecyclerAdapter<Recipe, FirebaseRecipeViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int position, @NonNull Business recipe) {
+            protected void onBindViewHolder(@NonNull FirebaseRecipeViewHolder firebaseRecipeViewHolder, int position, @NonNull Recipe recipe) {
                 firebaseRecipeViewHolder.bindRecipe(recipe);
             }
 
