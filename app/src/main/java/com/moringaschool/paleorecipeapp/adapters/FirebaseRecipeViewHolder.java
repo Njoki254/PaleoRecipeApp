@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.moringaschool.paleorecipeapp.R;
 import com.moringaschool.paleorecipeapp.models.Business;
 import com.moringaschool.paleorecipeapp.models.Constants;
+import com.moringaschool.paleorecipeapp.models.Recipe;
 import com.moringaschool.paleorecipeapp.ui.RecipeDetailActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -35,7 +36,7 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         itemView.setOnClickListener(this);
     }
 
-    public void bindRecipe(Business recipe) {
+    public void bindRecipe(Recipe recipe) {
         ImageView recipeImageView = (ImageView) mView.findViewById(R.id.recipeImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.recipeNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
@@ -44,20 +45,20 @@ public class FirebaseRecipeViewHolder extends RecyclerView.ViewHolder implements
         Picasso.get().load(recipe.getImageUrl()).into(recipeImageView);
 
         nameTextView.setText(recipe.getName());
-        categoryTextView.setText(recipe.getCategories().get(0).getTitle());
+        categoryTextView.setText(recipe.getCategories().get(0));
         ratingTextView.setText("Rating: " + recipe.getRating() + "/5");
     }
 
     @Override
     public void onClick(View view) {
-        final ArrayList<Business> recipes = new ArrayList<>();
+        final ArrayList<Recipe> recipes = new ArrayList<>();
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_RECIPES);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    recipes.add(snapshot.getValue(Business.class));
+                    recipes.add(snapshot.getValue(Recipe.class));
                 }
 
                 int itemPosition = getLayoutPosition();
